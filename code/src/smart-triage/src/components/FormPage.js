@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './FormPage.css';
+import "./FormPage.css";
 import { generateText } from "../utils/utils";
 import { rule } from "../utils/rule";
 import FilteredComponent from "./FilteredComponent";
@@ -7,8 +7,9 @@ import FilteredComponent from "./FilteredComponent";
 const FormPage = () => {
   const [files, setFiles] = useState([]);
   const [parsedEmails, setParsedEmails] = useState([]);
-  const [promptResponse, setPromptResponse] = useState('');
+  const [promptResponse, setPromptResponse] = useState("");
   const [expandedEmailIndex, setExpandedEmailIndex] = useState(null);
+  const [selectedFileNames, setSelectedFileNames] = useState([]);
 
   useEffect(() => {
     if (parsedEmails.length > 0) {
@@ -20,15 +21,14 @@ const FormPage = () => {
     if (event.target.files) {
       const fileArray = Array.from(event.target.files);
       setFiles(fileArray);
+      setSelectedFileNames(fileArray.map(file => file.name));
 
-      // Convert files to Base64 and store in localStorage
       const storedFiles = {};
       for (const file of fileArray) {
         const base64 = await fileToBase64(file);
         storedFiles[file.name] = base64;
       }
       localStorage.setItem("uploadedEmlFiles", JSON.stringify(storedFiles));
-      alert("Files stored in local storage!");
     }
   };
 
@@ -50,9 +50,8 @@ const FormPage = () => {
 
     const parsedData = Object.keys(storedFiles).map((fileName) => {
       const base64Data = storedFiles[fileName];
-      const content = atob(base64Data.split(",")[1]); // Decode Base64
+      const content = atob(base64Data.split(",")[1]);
 
-      // Simple parsing (extracts "From", "To", and "Subject")
       const fromMatch = content.match(/^From: (.+)$/m);
       const toMatch = content.match(/^To: (.+)$/m);
       const subjectMatch = content.match(/^Subject: (.+)$/m);
@@ -62,17 +61,15 @@ const FormPage = () => {
         from: fromMatch ? fromMatch[1] : "Unknown",
         to: toMatch ? toMatch[1] : "Unknown",
         subject: subjectMatch ? subjectMatch[1] : "No Subject",
-        content: content
+        content: content,
       };
     });
 
     setParsedEmails(parsedData);
-    console.log('parsedData----',parsedData)
-    console.log('rules----',rule)
-    if(parsedData.length > 0){
+    if (parsedData.length > 0) {
       const promptText = rule + parsedData[0].content;
-      const response = await generateText(promptText)
-      setPromptResponse(response)
+      const response = await generateText(promptText);
+      setPromptResponse(response);
     }
   };
 
@@ -81,64 +78,83 @@ const FormPage = () => {
   };
 
   return (
-    <div className="p-6 space-y-4">
-      <h1 className="text-xl font-bold custom-heading">Upload and Read EML Files</h1>
+    <div class="animated-background">
+      <div className="form-page-container">
 
-      <div className="input-container">
-        <input
-          type="file"
-          multiple
-          onChange={handleFileUpload}
-          className="file-input"
-          id="file-upload"
-        />
-        <label htmlFor="file-upload" className="custom-file-upload">
-          Choose Files
-        </label>
-        <button
-          onClick={handleReadEmails}
-          className="custom-button"
-        >
-          Read Stored Emails
-        </button>
-      </div>
+        <h1 className="page-title">Next-Gen Email & Document Management</h1>
 
-      <div className="mt-4">
-        <h2 className="font-semibold">Parsed Email Data:</h2>
-        {parsedEmails.length > 0 ? (
+        <div className="upload-section">
+          <div className="file-input-wrapper">
+            <input
+              type="file"
+              multiple
+              onChange={handleFileUpload}
+              id="file-upload"
+              className="file-input"
+            />
+            <label htmlFor="file-upload" className="file-label">
+              Choose Files
+            </label>
+          </div>
+          <div className="file-names">
+            {selectedFileNames.length > 0 ? (
+              <ul>
+                {selectedFileNames.map((fileName, index) => (
+                  <li key={index} className="file-name">{fileName}</li>
+                ))}
+              </ul>
+            ) : (
+              <p className="placeholder-text">No files selected</p>
+            )}
+          </div>
+        </div>
+
+
+        <div className="btn-section">
+          <button
+            onClick={handleReadEmails}
+            className="generate-report-button"
+          >
+            Generate Report
+          </button>
+        </div>
+
+        <div className="email-data-section">
+          {/* <h2 className="section-title">Parsed Data</h2> */}
+          {/* {parsedEmails.length > 0 ? (
           <ul className="email-list">
             {parsedEmails.map((email, index) => (
-              <li key={index} className="email-item mb-2">
-                <p>
-                  <strong>File Name:</strong> {email.fileName}
+              <li key={index} className="email-item">
+                <div className="email-header">
+                  <span className="file-name-label">{email.fileName}</span>
                   <button
                     onClick={() => toggleEmailDetails(index)}
-                    className="toggle-button"
+                    className="toggle-details-button"
                   >
-                    {expandedEmailIndex === index ? "−" : "+"}
+                    {expandedEmailIndex === index ? "Hide Details" : "View Details"}
                   </button>
-                </p>
+                </div>
                 {expandedEmailIndex === index && (
-                  <ul className="email-details">
-                    <li><strong>From:</strong> {email.from}</li>
-                    <li><strong>To:</strong> {email.to}</li>
-                    <li><strong>Subject:</strong> {email.subject}</li>
-                  </ul>
+                  <div className="email-details">
+                    <p><strong>From:</strong> {email.from}</p>
+                    <p><strong>To:</strong> {email.to}</p>
+                    <p><strong>Subject:</strong> {email.subject}</p>
+                  </div>
                 )}
               </li>
             ))}
           </ul>
         ) : (
-          <p>No emails parsed yet. Upload and click "Read Stored Emails".</p>
-        )}
-        {promptResponse && (
-          <div className="mt-4">
-            <h2 className="font-semibold">Prompt Response:</h2>
-            {/* <p>{promptResponse}</p> */}
-            <FilteredComponent data={promptResponse} />
+          <p className="placeholder-text">No emails parsed yet.</p>
+        )} */}
 
-          </div>
-        )}
+          {promptResponse && (
+            <div className="prompt-response">
+               <h2 className="section-title">Parsed Data</h2>
+              <FilteredComponent data={promptResponse} />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

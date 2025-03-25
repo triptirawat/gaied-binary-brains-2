@@ -1,0 +1,45 @@
+Content-Type: multipart/mixed; boundary="===============9161394841529746106=="
+MIME-Version: 1.0
+From: sender@example.com
+To: recipient@example.com
+Subject: Email with PDF Attachment
+
+--===============9161394841529746106==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+Hello,
+
+Please find the attached PDF document for your reference.
+
+Best regards,
+Sender
+--===============9161394841529746106==
+Content-Type: application/octet-stream
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=Sample_Attachment.pdf
+
+JVBERi0xLjMKMyAwIG9iago8PC9UeXBlIC9QYWdlCi9QYXJlbnQgMSAwIFIKL1Jlc291cmNlcyAy
+IDAgUgovQ29udGVudHMgNCAwIFI+PgplbmRvYmoKNCAwIG9iago8PC9GaWx0ZXIgL0ZsYXRlRGVj
+b2RlIC9MZW5ndGggMjE1Pj4Kc3RyZWFtCnicVY7NSgQxEITv+xR11EubzOwS5qjoHDwJ5gVippeJ
+TBLZZFnw6e1k/UEIdLqaqvoGPO8UHQwuuweLu1lDD6QU7BFPtknD/kBmgplkGNgFN68ufmyMl8cZ
+97U6v0ZO9Rb2vTkUqf0I29NGTVqc40Tq6rRrKJDnUP4yjkE+rgfxgppRVwZx3MDRha3fCVZEn1OV
+Kiwccyr15CoXrPny7W4Y5ZfjP4NWZMbO4F3CGyMkv50XKQwJovQqwswshSfmxuHPpeYYPmVp3FfO
+gsQsPvop+gJupl++CmVuZHN0cmVhbQplbmRvYmoKMSAwIG9iago8PC9UeXBlIC9QYWdlcwovS2lk
+cyBbMyAwIFIgXQovQ291bnQgMQovTWVkaWFCb3ggWzAgMCA1OTUuMjggODQxLjg5XQo+PgplbmRv
+YmoKNSAwIG9iago8PC9UeXBlIC9Gb250Ci9CYXNlRm9udCAvSGVsdmV0aWNhCi9TdWJ0eXBlIC9U
+eXBlMQovRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZwo+PgplbmRvYmoKMiAwIG9iago8PAovUHJv
+Y1NldCBbL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSV0KL0ZvbnQgPDwKL0YxIDUg
+MCBSCj4+Ci9YT2JqZWN0IDw8Cj4+Cj4+CmVuZG9iago2IDAgb2JqCjw8Ci9Qcm9kdWNlciAoUHlG
+UERGIDEuNy4yIGh0dHA6Ly9weWZwZGYuZ29vZ2xlY29kZS5jb20vKQovQ3JlYXRpb25EYXRlIChE
+OjIwMjUwMzI0MTc0ODAyKQo+PgplbmRvYmoKNyAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFn
+ZXMgMSAwIFIKL09wZW5BY3Rpb24gWzMgMCBSIC9GaXRIIG51bGxdCi9QYWdlTGF5b3V0IC9PbmVD
+b2x1bW4KPj4KZW5kb2JqCnhyZWYKMCA4CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDM3MiAw
+MDAwMCBuIAowMDAwMDAwNTU1IDAwMDAwIG4gCjAwMDAwMDAwMDkgMDAwMDAgbiAKMDAwMDAwMDA4
+NyAwMDAwMCBuIAowMDAwMDAwNDU5IDAwMDAwIG4gCjAwMDAwMDA2NTkgMDAwMDAgbiAKMDAwMDAw
+MDc2OCAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9TaXplIDgKL1Jvb3QgNyAwIFIKL0luZm8gNiAwIFIK
+Pj4Kc3RhcnR4cmVmCjg3MQolJUVPRgo=
+
+--===============9161394841529746106==--
